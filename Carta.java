@@ -1,25 +1,26 @@
 
-/**
- * Write a description of class Carta here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Carta
 {
-    // instance variables - replace the example below with your own
+    
     private int valor;
     private int palo;
     
-    /**
-     * Constructor for objects of class Carta
-     */
     public Carta(int valor, int palo)
     {
         this.valor = valor;
         this.palo = palo;
     }
 
+    public int getValor()
+    {
+        return valor;
+    }
+    
+    public int getPalo()
+    {
+        return palo;
+    }
+    
     public String toString()
     {
         String nombreCarta = "";
@@ -81,7 +82,6 @@ public class Carta
             {
                 nombreCarta += " de bastos";
             }
-        
         }
         else
         {
