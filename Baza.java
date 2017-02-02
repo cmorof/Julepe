@@ -34,4 +34,32 @@ public class Baza
         }
         return getPalo;
     }
+    
+    public Carta cartaQueVaGanandoLaBaza()
+    {
+        Carta cartaQueGana = null;
+        boolean buscando = true;
+        
+        for (int i = 0; i < baza.length; i++)
+        {
+            if(baza[i] == null)
+            {
+                buscando = false;
+            }
+        }
+        
+        if(buscando == true)
+        {
+            int i = 0;
+            while (i < baza.length)
+            {
+                if(cartaQueGana.ganaA(baza[i], paloQuePinta) == true)
+                {
+                    cartaQueGana = baza[i];
+                    i++;
+                }
+            }
+        }
+        return cartaQueGana;
+    }
 }
