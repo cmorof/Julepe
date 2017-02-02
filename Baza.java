@@ -5,18 +5,19 @@ public class Baza
     private int numeroJugadores;
     private int paloQuePinta;
     private Carta[] baza;
+    private int contador;
     
     public Baza(int numeroJugadores, int paloQuePinta)
     {
-        numeroJugadores = 0;
-        paloQuePinta = 0;
+        this.numeroJugadores = numeroJugadores;
+        this.paloQuePinta = paloQuePinta;
         baza = new Carta[numeroJugadores];
+        contador = 0;
     }
     
     public void addCarta(Carta cartaQueTiraUnJugador, String nombreJugador)
     {
-        int i = 0;
-        baza[i] = cartaQueTiraUnJugador;
-        i++;
+        baza[contador] = cartaQueTiraUnJugador;
+        contador++;
     }
 }
