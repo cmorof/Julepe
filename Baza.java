@@ -20,4 +20,18 @@ public class Baza
         baza[contador] = cartaQueTiraUnJugador;
         contador++;
     }
+    
+    public int getPaloPrimeraCartaDeLaBaza()
+    {
+        int getPalo;
+        if (contador == 0)
+        {
+            getPalo = -1;
+        }
+        else
+        {
+            getPalo = baza[0].getPalo();
+        }
+        return getPalo;
+    }
 }
