@@ -6,6 +6,7 @@ public class Baza
     private int paloQuePinta;
     private Carta[] baza;
     private int contador;
+    private String nombre;
     
     public Baza(int numeroJugadores, int paloQuePinta)
     {
@@ -19,6 +20,12 @@ public class Baza
     {
         baza[contador] = cartaQueTiraUnJugador;
         contador++;
+        nombre = nombreJugador;
+    }
+    
+    public void getNombre()
+    {
+        return nombre;
     }
     
     public int getPaloPrimeraCartaDeLaBaza()
@@ -61,5 +68,10 @@ public class Baza
             }
         }
         return cartaQueGana;
+    }
+    
+    public void nombreJugadorQueVaGanandoLaBaza()
+    {
+        cartaQueGana.getNombre();
     }
 }
