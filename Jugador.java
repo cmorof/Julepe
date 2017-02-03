@@ -1,3 +1,4 @@
+import java.util.Random;
     
 public class Jugador
 {
@@ -36,5 +37,73 @@ public class Jugador
                 System.out.println(cartaActual);
             }
         }
+    }
+    
+    public String getNombre()
+    {
+        return nombre;
+    }
+    
+    public Carta tirarCarta(String nombreCarta)
+    {
+        Carta cartaTirada = null;
+        
+        if (numeroCartasEnLaMano > 0)
+        {
+            int cartaActual = 0;
+            boolean buscando = true;
+            while(cartaActual < mano.length && buscando)
+            {
+                if(mano[cartaActual] != null)
+                {
+                    if (nombreCarta.equals(mano[cartaActual].toString()))
+                    {
+                        buscando = false;
+                        cartaTirada = mano[cartaActual];
+                        mano[cartaActual] = null;
+                        numeroCartasEnLaMano--;
+                        System.out.println(nombre + " ha tirado " + cartaTirada);
+                    }
+                }    
+                cartaActual++;
+            }
+        }
+        
+        return cartaTirada;
+    }
+    
+    /**
+     * Método que tira una carta aleatoria
+     */
+    
+    public Carta tirarCartaAleatoria()
+    {
+        Carta cartaTirada = null;
+
+        if (numeroCartasEnLaMano > 0)
+        {
+            Random aleatorio = new Random();
+            
+            boolean elJugadorHaTiradoUnaCarta = false;
+            while(elJugadorHaTiradoUnaCarta == false)
+            {
+                int posicionAleatoria = aleatorio.nextInt(5);
+                if(mano[posicionAleatoria] != null)
+                {
+                    cartaTirada = mano[posicionAleatoria];
+                    mano[posicionAleatoria] = null;
+                    numeroCartasEnLaMano--;
+                    System.out.println(nombre + " ha tirado " + cartaTirada);
+                    elJugadorHaTiradoUnaCarta = true;
+                }
+            }
+        }
+        
+        return cartaTirada;
+    }
+    
+        public Carta tirarCartaInteligentemente(int paloPrimeraCarta, Carta cartaQueGana, int paloQuePinta)
+    {
+        return tirarCartaAleatoria();
     }
 }
