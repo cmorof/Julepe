@@ -4,9 +4,10 @@ public class Baza
 {
     private int numeroJugadores;
     private int paloQuePinta;
-    private Carta[] baza;
     private int contador;
-    private String nombre;
+    private Carta[] baza;
+    private Carta cartaQueGana;
+    private String nombreJugadorQueVaGanando;
     
     public Baza(int numeroJugadores, int paloQuePinta)
     {
@@ -14,28 +15,34 @@ public class Baza
         this.paloQuePinta = paloQuePinta;
         baza = new Carta[numeroJugadores];
         contador = 0;
+        cartaQueGana = null;
+        nombreJugadorQueVaGanando = null;
     }
     
-    public void addCarta(Carta cartaQueTiraUnJugador, String nombreJugador)
+    public void addCarta(Carta cartaTirada, String nombreJugador)
     {
-        baza[contador] = cartaQueTiraUnJugador;
+        baza[contador] = cartaTirada;
         contador++;
-        nombre = nombreJugador;
-    }
-    
-    public void getNombre()
-    {
-        return nombre;
+        if (contador == 0)
+        {
+            cartaQueGana = cartaTirada;
+            nombreJugadorQueVaGanando = nombreJugador;
+        }
+        else
+        {
+            if (cartaTirada.ganaA(cartaQueGana, paloQuePinta))
+            {
+                cartaQueGana = cartaTirada;
+                nombreJugadorQueVaGanando = nombreJugador;
+            }
+        }
+        
     }
     
     public int getPaloPrimeraCartaDeLaBaza()
     {
-        int getPalo;
-        if (contador == 0)
-        {
-            getPalo = -1;
-        }
-        else
+        int getPalo = -1;
+        if (contador != 0)
         {
             getPalo = baza[0].getPalo();
         }
@@ -44,34 +51,11 @@ public class Baza
     
     public Carta cartaQueVaGanandoLaBaza()
     {
-        Carta cartaQueGana = null;
-        boolean buscando = true;
-        
-        for (int i = 0; i < baza.length; i++)
-        {
-            if(baza[i] == null)
-            {
-                buscando = false;
-            }
-        }
-        
-        if(buscando == true)
-        {
-            int i = 0;
-            while (i < baza.length)
-            {
-                if(cartaQueGana.ganaA(baza[i], paloQuePinta) == true)
-                {
-                    cartaQueGana = baza[i];
-                    i++;
-                }
-            }
-        }
         return cartaQueGana;
     }
     
-    public void nombreJugadorQueVaGanandoLaBaza()
+    public String nombreJugadorQueVaGanandoLaBaza()
     {
-        cartaQueGana.getNombre();
+        return nombreJugadorQueVaGanando;
     }
 }
