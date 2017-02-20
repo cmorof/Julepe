@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
     
 public class Jugador
@@ -5,12 +6,14 @@ public class Jugador
     private String nombre;
     private Carta[] mano;
     private int numeroCartasEnLaMano;
+    private ArrayList<Baza> bazasGanadas;
 
     public Jugador(String nombreJugador)
     {
         nombre = nombreJugador;
         mano = new Carta[5];
         numeroCartasEnLaMano = 0;
+        bazasGanadas = new ArrayList();
     }
     
     /**
@@ -102,8 +105,18 @@ public class Jugador
         return cartaTirada;
     }
     
-        public Carta tirarCartaInteligentemente(int paloPrimeraCarta, Carta cartaQueGana, int paloQuePinta)
+    public Carta tirarCartaInteligentemente(int paloPrimeraCarta, Carta cartaQueGana, int paloQuePinta)
     {
         return tirarCartaAleatoria();
+    }
+    
+    public void addBaza(Baza bazaGanada)
+    {
+         bazasGanadas.add(bazaGanada);
+    }
+    
+    public int getNumeroBazasGanadas()
+    {
+        return bazasGanadas.size();
     }
 }

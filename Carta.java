@@ -1,11 +1,10 @@
 
 public class Carta
 {
-    
     private int valor;
-    private int palo;
+    private Palo palo;
     
-    public Carta(int valor, int palo)
+    public Carta(int valor, Palo palo)
     {
         this.valor = valor;
         this.palo = palo;
@@ -16,7 +15,7 @@ public class Carta
         return valor;
     }
     
-    public int getPalo()
+    public Palo getPalo()
     {
         return palo;
     }
@@ -30,16 +29,16 @@ public class Carta
         
         switch (palo)
         {
-            case 0:
+            case OROS:
             textoPalo = "oros";
             break;
-            case 1:
+            case COPAS:
             textoPalo = "copas";
             break;
-            case 2:
+            case ESPADAS:
             textoPalo = "espadas";
             break;
-            case 3:
+            case BASTOS:
             textoPalo = "bastos";
         }
         
@@ -76,7 +75,44 @@ public class Carta
             textoValor = "rey";
         }
         
-        nombreCarta = textoValor + "de" + textoPalo;
+        nombreCarta = textoValor + " de " + palo;
         return nombreCarta;
+    }
+    
+    public boolean ganaA(Carta cartaPasada, int paloQuePinta)
+    {
+         boolean gana = false;
+         
+         if(palo == cartaPasada.getPalo())
+         {
+             if(getPosicionEscalaTute() > cartaPasada.getPosicionEscalaTute())
+             {
+                gana = false;
+             }
+         }
+         
+         else 
+         {
+             gana = true;
+         }
+         
+         return gana;
+    }
+    
+    public int getPosicionEscalaTute()
+    {
+        int posicion = valor;
+        
+        if (valor == 3)
+        {
+            posicion = 13;
+        }
+        
+        else if (valor == 1)
+        {
+            posicion = 14;
+        }
+        
+        return posicion;
     }
 }

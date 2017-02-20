@@ -6,7 +6,7 @@ public class Juego
     private Jugador[] jugadores;
     private Mazo mazo;
     private Carta cartaQuePinta;
-    private int paloQuePinta;
+    private Palo paloQuePinta;
     
     public Juego(int numeroJugadores, String nombreHumano)
     {
@@ -41,7 +41,7 @@ public class Juego
         
     }
 
-    public int repartir()
+    public Palo repartir()
     {
         mazo.barajar();
         
@@ -58,16 +58,16 @@ public class Juego
         paloQuePinta = nuevaCarta.getPalo();
         switch(paloQuePinta)
         {
-            case 0:
+            case OROS:
             System.out.println("Pintan oros");
             break;
-            case 1:
+            case COPAS:
             System.out.println("Pintan copas");
             break;
-            case 2:
+            case ESPADAS:
             System.out.println("Pintan espadas");
             break;
-            case 3:
+            case BASTOS:
             System.out.println("Pintan bastos");
             break;
         }

@@ -39,9 +39,9 @@ public class Baza
         
     }
     
-    public int getPaloPrimeraCartaDeLaBaza()
+    public Palo getPaloPrimeraCartaDeLaBaza()
     {
-        int getPalo = -1;
+        Palo getPalo = null;
         if (contador != 0)
         {
             getPalo = baza[0].getPalo();
